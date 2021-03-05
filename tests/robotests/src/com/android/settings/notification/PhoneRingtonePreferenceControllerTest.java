@@ -73,13 +73,14 @@ public class PhoneRingtonePreferenceControllerTest {
     }
 
     @Test
-     public void displayPreference_shouldUpdateTitle_for_MultiSimDevice() {
-         when(mTelephonyManager.isMultiSimEnabled()).thenReturn(true);
-         when(mPreferenceScreen.findPreference(mController.getPreferenceKey()))
-                 .thenReturn(mPreference);
-         mController.displayPreference(mPreferenceScreen);
- 
-         verify(mPreference).setTitle(mContext.getString(R.string.ringtone1_title));
+    public void displayPreference_shouldUpdateTitle_for_MultiSimDevice() {
+        when(mTelephonyManager.isMultiSimEnabled()).thenReturn(true);
+        when(mPreferenceScreen.findPreference(mController.getPreferenceKey()))
+                .thenReturn(mPreference);
+        mController.displayPreference(mPreferenceScreen);
+
+        verify(mPreference).setTitle(mContext.getString(R.string.ringtone_title) + " - " +
+            String.format(mContext.getString(R.string.sim_card_number_title), 1)));
     }
 
     @Test
