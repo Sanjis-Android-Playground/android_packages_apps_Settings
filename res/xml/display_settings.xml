@@ -113,6 +113,9 @@
             android:defaultValue="false"
             settings:position="none" />
 
+        <com.android.settings.display.DensityPreference
+            android:key="density"
+            android:title="@string/developer_smallest_width" />
     </PreferenceCategory>
 
     <PreferenceCategory
