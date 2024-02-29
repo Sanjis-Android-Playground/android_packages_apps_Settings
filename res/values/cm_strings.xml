@@ -211,4 +211,11 @@
     <string name="gms_services_summary">Google services and preferences</string>
     <string name="wellbeing_title">Digital wellbeing</string>
     <string name="wellbeing_summary">Digital wellbeing and parental controls</string>
+
+    <!-- Lid behaviour -->
+    <string name="lid_behavior_title">Smart cover</string>
+    <string name="lid_behavior_summary">Control device behavior when cover is closed</string>
+    <string name="lid_behavior_none">None</string>
+    <string name="lid_behavior_lock">Lock</string>
+    <string name="lid_behavior_sleep">Sleep</string>
 </resources>
