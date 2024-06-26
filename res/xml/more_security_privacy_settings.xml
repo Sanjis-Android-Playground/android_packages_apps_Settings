@@ -238,12 +238,13 @@
         settings:controller="com.android.settings.security.MemtagPagePreferenceController" />
 
 
-    <com.android.settings.custom.preference.SecureSettingSwitchPreference
+    <com.android.settings.preferences.GlobalSettingSwitchPreference
         android:order="92"
         android:key="window_ignore_secure"
         android:title="@string/laboratory_ignore_window_secure_title"
         android:summary="@string/laboratory_ignore_window_secure_summary"
-        android:defaultValue="false"/>
+        android:defaultValue="false"
+        settings:position="none"/>
 
 
 </PreferenceScreen>
