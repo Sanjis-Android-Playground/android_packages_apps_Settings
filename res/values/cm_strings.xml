@@ -198,6 +198,8 @@
     <string name="battery_maximum_capacity_summary">%1$d mAh (%2$d%%)</string>
     <string name="battery_maximum_capacity_not_available" translatable="false">@string/battery_cycle_count_not_available</string>
     
-    <string name="gms_enabled_title">Google services</string>
+    <string name="gms_services_title">Google services</string>
+    <string name="gms_services_summary">Google services and preferences</string>
     <string name="wellbeing_title">Digital wellbeing</string>
+    <string name="wellbeing_summary">Digital wellbeing and parental controls</string>
 </resources>
