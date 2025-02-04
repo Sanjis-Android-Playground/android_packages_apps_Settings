@@ -40,13 +40,8 @@ public class DoubleTapPowerPreferenceController extends BasePreferenceController
                 || prefs.getBoolean(DoubleTapPowerSettings.PREF_KEY_SUGGESTION_COMPLETE, false);
     }
 
-    private static boolean isGestureAvailable(@NonNull Context context) {
-        if (!android.service.quickaccesswallet.Flags.launchWalletOptionOnPowerDoubleTap()) {
-            return context.getResources()
-                    .getBoolean(
-                            com.android.internal.R.bool.config_cameraDoubleTapPowerGestureEnabled);
-        }
-        return DoubleTapPowerSettingsUtils.isDoubleTapPowerButtonGestureAvailable(context);
+    private static boolean isGestureAvailable(Context context) {
+        return false;
     }
 
     @Override
