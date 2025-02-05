@@ -47,17 +47,33 @@
 
     <PreferenceCategory
         android:order="-120"
+        android:key="top_level_system_info_category"
+        android:layout="@layout/settingslib_preference_category_no_title">
+
+        <com.android.settings.widget.HomepagePreference
+            android:fragment="com.android.settings.security.LockscreenDashboardFragment"
+            android:icon="@drawable/ic_homepage_lockscreen"
+            android:key="top_level_lockscreen"
+            android:order="-60"
+            android:title="@string/lockscreen_settings_title"
+            android:summary="@string/app_and_notification_dashboard_summary"
+            settings:highlightableMenuKey="top_level_lockscreen"/>
+
+        <com.android.settings.widget.RestrictedHomepagePreference
+            android:icon="@drawable/ic_custom_settings_wallpaper_white"
+            android:key="top_level_wallpaper"
+            android:order="-10"
+            android:title="@string/wallpaper_settings_title"
+            android:summary="@string/wallpaper_dashboard_summary"
+            settings:highlightableMenuKey="@string/menu_key_wallpaper"
+            settings:controller="com.android.settings.display.TopLevelWallpaperPreferenceController"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:order="-110"
         android:key="top_level_personalize_category"
         android:layout="@layout/settingslib_preference_category_no_title">
-        <com.android.settings.widget.HomepagePreference
-            android:fragment="com.custom.settings.PersonalizationsFragment"
-            android:icon="@drawable/ic_special_settings"
-            android:key="top_level_personalizations"
-            android:order="-61"
-            android:title="@string/custom_settings_title"
-            android:summary="@string/custom_settings_summary"
-            settings:controller="com.custom.settings.TopLevelSettingsPreferenceController"/>
-
         <com.android.settings.widget.HomepagePreference
             android:fragment="com.android.settings.applications.AppDashboardFragment"
             android:icon="@drawable/ic_apps_filled"
@@ -77,64 +93,10 @@
             settings:highlightableMenuKey="@string/menu_key_notifications"/>
 
         <com.android.settings.widget.HomepagePreference
-            android:fragment="com.android.settings.notification.SoundSettings"
-            android:icon="@drawable/ic_volume_up_filled"
-            android:key="top_level_sound"
-            android:order="-40"
-            android:title="@string/sound_settings"
-            android:summary="@string/sound_dashboard_summary_with_dnd"
-            settings:highlightableMenuKey="@string/menu_key_sound"
-            settings:controller="com.android.settings.sound.TopLevelSoundPreferenceController"/>
-
-        <com.android.settings.widget.RestrictedHomepagePreference
-            android:fragment="com.android.settings.notification.modes.ZenModesListFragment"
-            android:icon="@*android:drawable/ic_zen_priority_modes"
-            android:key="top_level_priority_modes"
-            android:order="-35"
-            android:title="@string/zen_modes_list_title"
-            settings:useAdminDisabledSummary="true"
-            settings:highlightableMenuKey="@string/menu_key_priority_modes"
-            settings:controller="com.android.settings.notification.modes.ZenModesLinkPreferenceController"/>
-
-        <com.android.settings.widget.HomepagePreference
-            android:fragment="com.android.settings.communal.CommunalDashboardFragment"
-            android:icon="@drawable/ia_settings_communal"
-            android:key="top_level_communal"
-            android:order="-30"
-            android:title="@string/communal_settings_title"
-            android:summary="@string/communal_settings_summary"
-            settings:highlightableMenuKey="@string/menu_key_communal"
-            settings:controller="com.android.settings.communal.CommunalPreferenceController"/>
-
-        <com.android.settings.widget.HomepagePreference
-            android:fragment="com.android.settings.DisplaySettings"
-            android:icon="@drawable/ic_settings_display_filled"
-            android:key="top_level_display"
-            android:order="-20"
-            android:title="@string/display_settings"
-            android:summary="@string/display_dashboard_summary"
-            settings:highlightableMenuKey="@string/menu_key_display"
-            settings:controller="com.android.settings.display.TopLevelDisplayPreferenceController"/>
-
-        <com.android.settings.widget.RestrictedHomepagePreference
-            android:icon="@drawable/ic_settings_wallpaper_filled"
-            android:key="top_level_wallpaper"
-            android:order="-10"
-            android:title="@string/wallpaper_settings_title"
-            android:summary="@string/wallpaper_dashboard_summary"
-            settings:highlightableMenuKey="@string/menu_key_wallpaper"
-            settings:controller="com.android.settings.display.TopLevelWallpaperPreferenceController"/>
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:order="-110"
-        android:key="top_level_system_info_category"
-        android:layout="@layout/settingslib_preference_category_no_title">
-        <com.android.settings.widget.HomepagePreference
             android:fragment="com.android.settings.deviceinfo.StorageDashboardFragment"
             android:icon="@drawable/ic_storage_filled"
             android:key="top_level_storage"
-            android:order="-50"
+            android:order="-40"
             android:title="@string/storage_settings"
             android:summary="@string/summary_placeholder"
             settings:highlightableMenuKey="@string/menu_key_storage"
@@ -151,29 +113,60 @@
             settings:controller="com.android.settings.fuelgauge.TopLevelBatteryPreferenceController"/>
 
         <com.android.settings.widget.HomepagePreference
-            android:fragment="com.android.settings.system.SystemDashboardFragment"
-            android:icon="@drawable/ic_settings_system_dashboard_filled"
-            android:key="top_level_system"
+            android:fragment="com.android.settings.notification.SoundSettings"
+            android:icon="@drawable/ic_volume_up_filled"
+            android:key="top_level_sound"
             android:order="-20"
-            android:title="@string/header_category_system"
-            android:summary="@string/system_dashboard_summary"
-            settings:highlightableMenuKey="@string/menu_key_system"/>
+            android:title="@string/sound_settings"
+            android:summary="@string/sound_dashboard_summary_with_dnd"
+            settings:highlightableMenuKey="@string/menu_key_sound"
+            settings:controller="com.android.settings.sound.TopLevelSoundPreferenceController"/>
+
+        <com.android.settings.widget.RestrictedHomepagePreference
+            android:fragment="com.android.settings.notification.modes.ZenModesListFragment"
+            android:icon="@*android:drawable/ic_zen_priority_modes"
+            android:key="top_level_priority_modes"
+            android:order="-10"
+            android:title="@string/zen_modes_list_title"
+            settings:useAdminDisabledSummary="true"
+            settings:highlightableMenuKey="@string/menu_key_priority_modes"
+            settings:controller="com.android.settings.notification.modes.ZenModesLinkPreferenceController"/>
 
         <com.android.settings.widget.HomepagePreference
-            android:fragment="com.android.settings.deviceinfo.aboutphone.MyDeviceInfoFragment"
-            android:icon="@drawable/ic_settings_about_device_filled"
-            android:key="top_level_about_device"
-            android:order="-10"
-            android:title="@string/about_settings"
-            android:summary="@string/summary_placeholder"
-            settings:highlightableMenuKey="@string/menu_key_about_device"
-            settings:controller="com.android.settings.deviceinfo.aboutphone.TopLevelAboutDevicePreferenceController"/>
+            android:fragment="com.android.settings.communal.CommunalDashboardFragment"
+            android:icon="@drawable/ia_settings_communal"
+            android:key="top_level_communal"
+            android:order="10"
+            android:title="@string/communal_settings_title"
+            android:summary="@string/communal_settings_summary"
+            settings:highlightableMenuKey="@string/menu_key_communal"
+            settings:controller="com.android.settings.communal.CommunalPreferenceController"/>
+
+        <com.android.settings.widget.HomepagePreference
+            android:fragment="com.android.settings.DisplaySettings"
+            android:icon="@drawable/ic_settings_display_filled"
+            android:key="top_level_display"
+            android:order="20"
+            android:title="@string/display_settings"
+            android:summary="@string/display_dashboard_summary"
+            settings:highlightableMenuKey="@string/menu_key_display"
+            settings:controller="com.android.settings.display.TopLevelDisplayPreferenceController"/>
     </PreferenceCategory>
 
     <PreferenceCategory
         android:order="-100"
         android:key="top_level_security_privacy_category"
         android:layout="@layout/settingslib_preference_category_no_title">
+        <com.android.settings.widget.HomepagePreference
+            android:fragment="com.android.settings.accessibility.AccessibilitySettings"
+            android:icon="@drawable/ic_settings_accessibility_filled"
+            android:key="top_level_accessibility"
+            android:order="-60"
+            android:title="@string/accessibility_settings"
+            android:summary="@string/accessibility_settings_summary"
+            settings:highlightableMenuKey="@string/menu_key_accessibility"
+            settings:controller="com.android.settings.accessibility.TopLevelAccessibilityPreferenceController"/>
+
         <com.android.settings.widget.HomepagePreference
             android:icon="@drawable/ic_settings_safety_center_filled"
             android:key="top_level_safety_center"
@@ -232,28 +225,30 @@
             android:fragment="com.android.settings.emergency.EmergencyDashboardFragment"
             settings:isPreferenceVisible="@bool/config_show_emergency_settings"
             settings:highlightableMenuKey="@string/menu_key_emergency"/>
+
+        <com.android.settings.widget.HomepagePreference
+            android:icon="@drawable/ic_homepage_wellbeing"
+            android:key="top_level_wb"
+            android:order="20"
+            android:title="@string/wellbeing_title"
+            android:summary="@string/wellbeing_summary"
+            settings:highlightableMenuKey="top_level_wellbeing"
+            settings:controller="com.android.settings.home.WellbeingPreferenceController"/>
+            
+        <com.android.settings.widget.HomepagePreference
+            android:icon="@drawable/ic_homepage_google"
+            android:key="top_level_services"
+            android:order="30"
+            android:title="@string/gms_services_title"
+            android:summary="@string/gms_services_summary"
+            settings:highlightableMenuKey="top_level_google"
+            settings:controller="com.android.settings.home.GooglePreferenceController"/>
     </PreferenceCategory>
 
     <PreferenceCategory
         android:order="-90"
         android:key="top_level_account_category"
         android:layout="@layout/settingslib_preference_category_no_title">
-        <com.android.settings.widget.HomepagePreference
-            android:icon="@drawable/ic_homepage_google"
-            android:key="top_level_services"
-            android:order="-40"
-            android:title="@string/gms_services_title"
-            android:summary="@string/gms_services_summary"
-            settings:highlightableMenuKey="top_level_google"
-            settings:controller="com.android.settings.home.GooglePreferenceController"/>
-        <com.android.settings.widget.HomepagePreference
-            android:icon="@drawable/ic_homepage_wellbeing"
-            android:key="top_level_wb"
-            android:order="-30"
-            android:title="@string/wellbeing_title"
-            android:summary="@string/wellbeing_summary"
-            settings:highlightableMenuKey="top_level_wellbeing"
-            settings:controller="com.android.settings.home.WellbeingPreferenceController"/>
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -262,23 +257,41 @@
         android:layout="@layout/settingslib_preference_category_no_title">
 
         <com.android.settings.widget.HomepagePreference
-            android:fragment="com.android.settings.accessibility.AccessibilitySettings"
-            android:icon="@drawable/ic_settings_accessibility_filled"
-            android:key="top_level_accessibility"
-            android:order="-20"
-            android:title="@string/accessibility_settings"
-            android:summary="@string/accessibility_settings_summary"
-            settings:highlightableMenuKey="@string/menu_key_accessibility"
-            settings:controller="com.android.settings.accessibility.TopLevelAccessibilityPreferenceController"/>
+            android:fragment="com.custom.settings.PersonalizationsFragment"
+            android:icon="@drawable/ic_special_settings"
+            android:key="top_level_personalizations"
+            android:order="-61"
+            android:title="@string/custom_settings_title"
+            android:summary="@string/custom_settings_summary"
+            settings:controller="com.custom.settings.TopLevelSettingsPreferenceController"/>
+
+        <com.android.settings.widget.HomepagePreference
+            android:fragment="com.android.settings.system.SystemDashboardFragment"
+            android:icon="@drawable/ic_settings_system_dashboard_filled"
+            android:key="top_level_system"
+            android:order="-50"
+            android:title="@string/header_category_system"
+            android:summary="@string/system_dashboard_summary"
+            settings:highlightableMenuKey="@string/menu_key_system"/>
 
         <com.android.settings.widget.HomepagePreference
             android:icon="@drawable/ic_help_filled"
             android:key="top_level_support"
-            android:order="-10"
+            android:order="-30"
             android:title="@string/page_tab_title_support"
             android:summary="@string/support_summary"
             settings:highlightableMenuKey="@string/menu_key_support"
             settings:controller="com.android.settings.support.SupportPreferenceController"/>
+
+        <com.android.settings.widget.HomepagePreference
+            android:fragment="com.android.settings.deviceinfo.aboutphone.MyDeviceInfoFragment"
+            android:icon="@drawable/ic_settings_about_device_filled"
+            android:key="top_level_about_device"
+            android:order="-20"
+            android:title="@string/about_settings"
+            android:summary="@string/summary_placeholder"
+            settings:highlightableMenuKey="@string/menu_key_about_device"
+            settings:controller="com.android.settings.deviceinfo.aboutphone.TopLevelAboutDevicePreferenceController"/>
     </PreferenceCategory>
 
 </PreferenceScreen>
