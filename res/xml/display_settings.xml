@@ -93,6 +93,14 @@
             android:persistent="false"
             android:title="@string/accessibility_text_reading_options_title"
             settings:controller="com.android.settings.accessibility.TextReadingFragmentForDisplaySettingsController"/>
+            
+        <com.android.settings.preferences.SystemSettingSwitchPreference
+            android:key="wifi_standard_icon"
+            android:title="@string/wifi_standard_icon_title"
+            android:summary="@string/wifi_standard_icon_summary"
+            android:defaultValue="false"
+            settings:position="none" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
