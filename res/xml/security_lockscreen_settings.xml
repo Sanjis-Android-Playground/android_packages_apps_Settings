@@ -48,6 +48,13 @@
             android:title="@string/user_add_on_lockscreen_menu"
             settings:controller="com.android.settings.users.AddUserWhenLockedPreferenceController" />
 
+        <com.android.settings.preferences.SystemSettingSwitchPreference
+            android:key="secure_lockscreen_qs_disabled"
+            android:title="@string/disable_qs_title"
+            android:summary="@string/disable_qs_summary"
+            android:defaultValue="false"
+            settings:position="none"/>
+
         <com.android.settingslib.RestrictedPreference
             android:key="owner_info_settings"
             android:title="@string/owner_info_settings_title"
