@@ -55,6 +55,13 @@
             android:defaultValue="false"
             settings:position="none"/>
 
+        <com.android.settings.preferences.SystemSettingSwitchPreference
+           android:key="lockscreen_enable_power_menu"
+           android:title="@string/lockscreen_enable_power_menu_title"
+           android:summary="@string/lockscreen_enable_power_menu_summary"
+           android:defaultValue="true"
+           settings:position="none" />
+
         <com.android.settingslib.RestrictedPreference
             android:key="owner_info_settings"
             android:title="@string/owner_info_settings_title"
