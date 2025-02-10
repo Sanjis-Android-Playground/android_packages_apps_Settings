@@ -257,22 +257,22 @@
         android:layout="@layout/settingslib_preference_category_no_title">
 
         <com.android.settings.widget.HomepagePreference
-            android:fragment="com.custom.settings.PersonalizationsFragment"
-            android:icon="@drawable/ic_special_settings"
-            android:key="top_level_personalizations"
-            android:order="-61"
-            android:title="@string/custom_settings_title"
-            android:summary="@string/custom_settings_summary"
-            settings:controller="com.custom.settings.TopLevelSettingsPreferenceController"/>
-
-        <com.android.settings.widget.HomepagePreference
             android:fragment="com.android.settings.system.SystemDashboardFragment"
             android:icon="@drawable/ic_settings_system_dashboard_filled"
             android:key="top_level_system"
-            android:order="-50"
+            android:order="-61"
             android:title="@string/header_category_system"
             android:summary="@string/system_dashboard_summary"
             settings:highlightableMenuKey="@string/menu_key_system"/>
+
+        <com.android.settings.widget.HomepagePreference
+            android:fragment="com.custom.settings.PersonalizationsFragment"
+            android:icon="@drawable/ic_special_settings"
+            android:key="top_level_personalizations"
+            android:order="-50"
+            android:title="@string/custom_settings_title"
+            android:summary="@string/custom_settings_summary"
+            settings:controller="com.custom.settings.TopLevelSettingsPreferenceController"/>
 
         <com.android.settings.widget.HomepagePreference
             android:icon="@drawable/ic_help_filled"
