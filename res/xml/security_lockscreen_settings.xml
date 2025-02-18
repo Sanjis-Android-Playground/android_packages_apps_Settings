@@ -30,6 +30,12 @@
             settings:keywords="@string/keywords_lock_screen_notif"/>
 
         <Preference
+            android:key="lockscreen_widgets"
+            android:title="@string/lockscreen_widgets_title"
+            android:summary="@string/lockscreen_widgets_enabled_summary"
+            android:fragment="com.custom.settings.fragments.LockScreenWidgets" />
+
+        <Preference
             android:key="security_lock_screen_notifications_page"
             android:title="@string/lock_screen_notifs_title"
             android:summary="@string/summary_placeholder"
