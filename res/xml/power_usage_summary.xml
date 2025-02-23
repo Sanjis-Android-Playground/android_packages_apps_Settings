@@ -71,6 +71,13 @@
         settings:controller="com.android.settings.fuelgauge.batterytip.BatteryManagerPreferenceController"
         settings:keywords="@string/keywords_battery_adaptive_preferences" />
 
+    <com.android.settings.preferences.SystemPropertySwitchPreference
+        android:key="persist.sys.battery_health_limit_charge"
+        android:title="@string/battery_health_title"
+        android:summary="@string/battery_health_summary"
+        settings:controller="com.android.settings.fuelgauge.BatteryHealthController"
+        settings:position="none" />
+        
     <!-- Charging control -->
     <lineageos.preference.LineagePartsPreference
         android:key="charging_control"
