@@ -21,6 +21,42 @@
     android:title="@string/lockscreen_settings_title">
 
     <PreferenceCategory
+        android:key="lockscreen_weather_category"
+        android:title="@string/lockscreen_weather_category">
+
+        <Preference
+            android:title="@string/weather_settings_title"
+            android:summary="@string/weather_settings_summary">
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="org.omnirom.omnijaws"
+                android:targetClass="org.omnirom.omnijaws.SettingsActivity" />
+        </Preference>
+
+        <com.android.settings.preferences.SystemSettingSwitchPreference
+            android:key="lockscreen_weather_enabled"
+            android:title="@string/lockscreen_weather_title"
+            android:summary="@string/lockscreen_weather_summary"
+            settings:position="none" />
+
+        <com.android.settings.preferences.SystemSettingSwitchPreference
+            android:key="lockscreen_weather_location"
+            android:title="@string/lockscreen_weather_location_title"
+            android:summary="@string/lockscreen_weather_location_summary"
+            android:dependency="lockscreen_weather_enabled"
+            settings:position="none" />
+
+        <com.android.settings.preferences.SystemSettingSwitchPreference
+            android:key="lockscreen_weather_text"
+            android:title="@string/lockscreen_weather_text_title"
+            android:summary="@string/lockscreen_weather_text_summary"
+            android:defaultValue="true"
+            android:dependency="lockscreen_weather_enabled"
+            settings:position="none" />
+
+    </PreferenceCategory>
+   
+    <PreferenceCategory
         android:key="lockscreen_what_to_show"
         android:title="@string/lockscreen_settings_what_to_show_category">
         <com.android.settings.RestrictedListPreference
