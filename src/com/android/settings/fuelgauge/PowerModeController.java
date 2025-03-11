@@ -29,6 +29,7 @@ public class PowerModeController extends BasePreferenceController implements
 
     private static final String TAG = "PowerModeController";
     private static final String DEVICE_POWER_MODE_KEY = "persist.sys.power_mode_perf";
+    private static final String DEVICE_POWER_MODE_BY_USER_KEY = "power_mode_perf_by_user";
 
     public PowerModeController(Context context, String preferenceKey) {
         super(context, preferenceKey);
@@ -62,6 +63,12 @@ public class PowerModeController extends BasePreferenceController implements
         Settings.System.putIntForUser(
             mContext.getContentResolver(),
             DEVICE_POWER_MODE_KEY,
+            modeValue,
+            UserHandle.USER_CURRENT
+        );
+        Settings.System.putIntForUser(
+            mContext.getContentResolver(),
+            DEVICE_POWER_MODE_BY_USER_KEY,
             modeValue,
             UserHandle.USER_CURRENT
         );
