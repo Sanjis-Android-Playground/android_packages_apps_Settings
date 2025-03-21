@@ -119,6 +119,12 @@
         android:fragment="com.android.settings.sound.VolumeSteps"
         android:order="-135"/>
 
+    <com.android.settings.preferences.SystemSettingSwitchPreference
+        android:key="screenshot_sound_enabled"
+        android:title="@string/screenshot_shutter_sound_title"
+        android:summary="@string/screenshot_shutter_sound_summary"
+        android:defaultValue="true" />
+
     <!-- TODO(b/174964721): make this a PrimarySwitchPreference -->
     <!-- Interruptions -->
     <com.android.settingslib.RestrictedPreference
