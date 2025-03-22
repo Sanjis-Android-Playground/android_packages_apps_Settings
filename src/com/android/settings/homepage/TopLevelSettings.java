@@ -242,13 +242,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
     }
 
     @Override
-    public void onSplitLayoutChanged(boolean isRegularLayout) {
-        iteratePreferences(preference -> {
-            if (preference instanceof HomepagePreferenceLayout) {
-                ((HomepagePreferenceLayout) preference).getHelper().setIconVisible(isRegularLayout);
-            }
-        });
-    }
+    public void onSplitLayoutChanged(boolean isRegularLayout) {}
 
     @Override
     public void highlightPreferenceIfNeeded() {
