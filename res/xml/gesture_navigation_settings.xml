@@ -29,12 +29,14 @@
         android:summary="@string/show_navbar_hint_summary"
         android:defaultValue="true" />
 
-    <com.android.settings.preferences.SecureSettingSwitchPreference
-        android:key="back_gesture_haptic"
-        android:title="@string/back_gesture_haptic_title"
-        android:summary="@string/back_gesture_haptic_summary"
-        android:defaultValue="true"
-        settings:position="none" />
+    <!-- Back gesture intensity -->
+    <com.android.settings.preferences.SecureSettingSeekBarPreference
+        android:key="back_gesture_haptic_intensity"
+        android:title="@string/back_gesture_haptic_intensity_title"
+        android:max="5"
+        settings:min="0"
+        android:defaultValue="1"
+        settings:interval="1"/>
 
     <PreferenceCategory
         android:key="assistant_gesture_category"
