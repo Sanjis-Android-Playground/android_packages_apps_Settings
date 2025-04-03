@@ -15,58 +15,68 @@
  */
 package com.android.settings.fuelgauge
 
+import android.database.ContentObserver
+import android.os.Handler
+import android.os.Looper
+import android.provider.Settings
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
-import android.os.SystemProperties
-import android.os.Build
 import android.graphics.drawable.Icon
+import android.content.Context
+import android.os.UserHandle
+import android.os.SystemProperties
+import android.util.Log
 import com.android.settings.R
-import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.*
 
 class SmartChargeTileService : TileService() {
 
     companion object {
-        private const val SYS_PROP = "persist.sys.battery_health_limit_charge"
+        private const val BATTERY_CHARGE_KEY = "persist.sys.battery_health_limit_charge"
     }
 
-    private val coroutineScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
-    private val _smartChargeFlow = MutableStateFlow(SystemProperties.getBoolean(SYS_PROP, false))
-    private var smartChargeJob: Job? = null
+    private val contentObserver = object : ContentObserver(Handler(Looper.getMainLooper())) {
+        override fun onChange(selfChange: Boolean) {
+            updateTileState()
+        }
+    }
 
     override fun onStartListening() {
-        observeSmartChargeProperty()
+        contentResolver.registerContentObserver(
+            Settings.System.getUriFor(BATTERY_CHARGE_KEY),
+            false,
+            contentObserver
+        )
+        updateTileState()
     }
 
     override fun onStopListening() {
-        smartChargeJob?.cancel()
+        contentResolver.unregisterContentObserver(contentObserver)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        contentResolver.unregisterContentObserver(contentObserver)
     }
 
     override fun onClick() {
         if (!isGooglePixelDevice()) return
 
-        val newState = !_smartChargeFlow.value
-        SystemProperties.set(SYS_PROP, newState.toString())
-        _smartChargeFlow.value = newState
+        val isEnabled = getSmartChargeEnabled()
+        val newState = if (isEnabled) 0 else 1
+        val newPropertyState = if (isEnabled) "false" else "true"
+
+        Settings.System.putIntForUser(
+            contentResolver,
+            BATTERY_CHARGE_KEY,
+            newState,
+            UserHandle.USER_CURRENT
+        )
+
+        SystemProperties.set(BATTERY_CHARGE_KEY, newPropertyState)
+        updateTileState()
     }
 
-    private fun observeSmartChargeProperty() {
-        smartChargeJob?.cancel()
-        smartChargeJob = coroutineScope.launch {
-            flow {
-                while (currentCoroutineContext().isActive) {
-                    emit(SystemProperties.getBoolean(SYS_PROP, false))
-                    delay(1000)
-                }
-            }.distinctUntilChanged()
-             .collect { newValue ->
-                _smartChargeFlow.value = newValue
-                updateTile()
-            }
-        }
-    }
-
-    private fun updateTile() {
+    private fun updateTileState() {
         val tile = qsTile ?: return
 
         if (!isGooglePixelDevice()) {
@@ -75,7 +85,7 @@ class SmartChargeTileService : TileService() {
             return
         }
 
-        val enabled = _smartChargeFlow.value
+        val enabled = getSmartChargeEnabled()
         tile.state = if (enabled) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
         tile.icon = Icon.createWithResource(this, if (enabled) R.drawable.battery_unified_attr_defend else R.drawable.battery_unified_attr_charging)
         tile.label = getString(
@@ -85,13 +95,17 @@ class SmartChargeTileService : TileService() {
         tile.updateTile()
     }
 
-    private fun isGooglePixelDevice(): Boolean {
-        return Build.MANUFACTURER.equals("Google", ignoreCase = true) &&
-                Build.MODEL.lowercase().contains("pixel")
+    private fun getSmartChargeEnabled(): Boolean {
+        return Settings.System.getIntForUser(
+            contentResolver,
+            BATTERY_CHARGE_KEY,
+            0,
+            UserHandle.USER_CURRENT
+        ) == 1
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        coroutineScope.cancel()
+    private fun isGooglePixelDevice(): Boolean {
+        return android.os.Build.MANUFACTURER.equals("Google", ignoreCase = true) &&
+                android.os.Build.MODEL.lowercase().contains("pixel")
     }
 }
