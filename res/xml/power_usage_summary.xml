@@ -26,11 +26,13 @@
         android:title="@string/summary_placeholder"
         android:selectable="false"
         android:paddingBottom="0px"
+        android:order="-1101"
         settings:controller="com.android.settings.fuelgauge.BatteryHeaderPreferenceController" />
 
     <com.android.settings.fuelgauge.BatteryHeaderTextPreference
         android:key="battery_header_text"
         android:selectable="false"
+        android:order="-1100"
         settings:controller="com.android.settings.fuelgauge.BatteryHeaderTextPreferenceController" />
 
     <com.android.settingslib.widget.LayoutPreference
