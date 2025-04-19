@@ -70,7 +70,7 @@
             android:key="top_level_lockscreen"
             android:order="-60"
             android:title="@string/lockscreen_settings_title"
-            android:summary="@string/app_and_notification_dashboard_summary"
+            android:summary="@string/lockscreen_settings_summary"
             settings:highlightableMenuKey="top_level_lockscreen"/>
 
         <com.android.settings.widget.RestrictedHomepagePreference
