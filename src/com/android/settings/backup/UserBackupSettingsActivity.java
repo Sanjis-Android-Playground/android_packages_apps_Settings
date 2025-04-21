@@ -89,14 +89,14 @@ public class UserBackupSettingsActivity extends SettingsActivity implements Inde
                 Log.d(TAG, "Manufacturer provided backup settings, showing the preference screen");
             }
 
-            InsetUtils.applyWindowInsetsListener(findViewById(android.R.id.content));
+            InsetUtils.applyWindowInsetsListener(findViewById(R.id.main_content));
 
             // mFragmentManager can be set by {@link #setFragmentManager()} for testing
             if (mFragmentManager == null) {
                 mFragmentManager = getSupportFragmentManager();
             }
             mFragmentManager.beginTransaction()
-                    .replace(android.R.id.content, new BackupSettingsFragment())
+                    .replace(R.id.main_content, new BackupSettingsFragment())
                     .commit();
         }
     }
