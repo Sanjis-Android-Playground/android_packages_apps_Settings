@@ -20,10 +20,10 @@
     android:key="double_tap"
     android:title="@string/double_tap_title">
 
-    <com.android.settings.widget.VideoPreference
-        android:key="gesture_double_tap_screen_video"
-        app:animation="@raw/gesture_ambient_tap"
-        app:preview="@drawable/gesture_ambient_tap" />
+    <com.android.settingslib.widget.IllustrationPreference
+        android:key="gesture_tap_screen_video"
+        app:searchable="false"
+        app:lottie_rawRes="@raw/lottie_tap_to_check_phone"/>
 
     <com.android.settings.preferences.SystemSettingSwitchPreference
         android:key="doze_trigger_doubletap"
