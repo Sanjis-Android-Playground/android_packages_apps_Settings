@@ -79,6 +79,13 @@
             android:summary="@string/summary_placeholder"
             settings:keywords="@string/keywords_lock_screen_notif"/>
 
+        <com.android.settings.preferences.SystemSettingSwitchPreference
+            android:key="enable_ripple_unlock"
+            android:title="@string/enable_fingerprint_ripple_effect_title"
+            android:summary="@string/enable_ripple_effect_summary"
+            android:defaultValue="true"
+            settings:position="none" />
+
         <Preference
             android:key="edge_light"
             android:title="@string/edge_light_title"
