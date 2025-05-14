@@ -247,5 +247,11 @@
             android:summary="@string/ongoing_action_chip_summary"
             android:defaultValue="true" /> 
 
+        <lineageos.preference.GlobalSettingSwitchPreference
+            android:key="notification_sound_vib_screen_on"
+            android:title="@string/notification_sound_vib_screen_on_title"
+            android:summary="@string/notification_sound_vib_screen_on_summary"
+            android:defaultValue="true" />
+
     </PreferenceCategory>
 </PreferenceScreen>
