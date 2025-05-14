@@ -240,14 +240,14 @@
             settings:requiresConfig="@*android:bool/config_intrusiveNotificationLed"
             settings:replacesKey="notification_pulse" />
 
-        <lineageos.preference.GlobalSettingSwitchPreference
+        <com.android.settings.preferences.SystemSettingSwitchPreference
             android:key="ongoing_action_chip"
             android:order="30"
             android:title="@string/ongoing_action_chip_title"
             android:summary="@string/ongoing_action_chip_summary"
             android:defaultValue="true" /> 
 
-        <lineageos.preference.GlobalSettingSwitchPreference
+        <com.android.settings.preferences.SystemSettingSwitchPreference
             android:key="notification_sound_vib_screen_on"
             android:title="@string/notification_sound_vib_screen_on_title"
             android:summary="@string/notification_sound_vib_screen_on_summary"
